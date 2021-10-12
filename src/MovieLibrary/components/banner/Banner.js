@@ -1,42 +1,47 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
+import axios from "../../request/axios";
+import requests from "../../request/request";
 import "./Banner.css";
 
 const BASE_URL = "https://image.tmdb.org/t/p/original";
-const BACKUP_IMG =
-  "https://www.cfpdudgvirtual.org/wp-content/uploads/2018/12/Powtoon.jpg";
 
-export default class Banner extends Component {
-  static propTypes = {
-    movies: PropTypes.array.isRequired,
-  };
+function Banner() {
+  const [movie, setMovie] = useState([]);
 
-  state = {
-    selectedMovie: null,
-  };
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(requests.fetchNowPlaying1);
+      setMovie(
+        request.data.results[
+          Math.floor(Math.random() * request.data.results.length - 1)
+        ]
+      );
+      return request;
+    }
+    fetchData();
+  }, []);
 
-  render() {
-    const { movies } = this.props;
-    const { selectedMovie } = this.state;
-
-    return (
-      <header
-        className="banner"
-        style={{
-          backgroundSize: "cover",
-          backgroundImage: `url(${BASE_URL}${movies[1].backdrop_path})`,
-          backgroundPosition: "center center",
-        }}
-      >
-        <div className="banner-content">
-          <h1 className="banner-title">
-            {movies[1].title || movies[1].original_name}
-          </h1>
-          <h2 className="banner-description">{movies[1].overview}</h2>
-          <h2 className="banner-rank">Ranked {movies[1].vote_average}</h2>
-        </div>
-        <div className="banner--fadeBottom" />
-      </header>
-    );
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
+
+  return (
+    <header
+      className="banner"
+      style={{
+        backgroundSize: "cover",
+        backgroundImage: `url(${BASE_URL}${movie?.backdrop_path})`,
+        backgroundPosition: "center center",
+      }}
+    >
+      <div className="banner-content">
+        <h1 className="banner-title">{movie?.title || movie?.original_name}</h1>
+        <h2 className="banner-description">{truncate(movie?.overview, 170)}</h2>
+        <h2 className="banner-rank">Ranked {movie?.vote_average}</h2>
+      </div>
+      <div className="banner--fadeBottom" />
+    </header>
+  );
 }
+
+export default Banner;

@@ -4,8 +4,6 @@ import { fetchTopRatedMovies } from "../store/actions";
 
 import { getMovies } from "../store/selectors";
 import MoviesList from "./MoviesList";
-import Banner from "../components/banner/Banner";
-import Modal from "../components/modal/Modal";
 
 class MovieLibrary extends Component {
   static propTypes = {};
@@ -29,11 +27,9 @@ class MovieLibrary extends Component {
     const { movies } = this.props;
     return (
       <div className="MovieLibrary">
-        {movies.length && <Banner movies={movies} />}
         {movies.length && (
           <MoviesList movies={movies} childToParent={this.childToParent} />
         )}
-        {<Modal movie={this.state.movieModal} count={this.state.count} />}
       </div>
     );
   }

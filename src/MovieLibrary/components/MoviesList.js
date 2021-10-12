@@ -1,10 +1,8 @@
 import React, { Component, PureComponent } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Arrow from "./arrow.png";
 
 import TMDBImage from "./TMDBImage";
-import "./MoviesList.css";
 
 export default class MoviesList extends PureComponent {
   static propTypes = {
@@ -29,7 +27,7 @@ export default class MoviesList extends PureComponent {
         {/* <SortingOptions /> */}
         <div className="row-container">
           <div className="row-arrow left">
-            <img className="left-img" src={Arrow} />
+            {/* <img className="left-img" src={Arrow} /> */}
           </div>
           <div className="row-posters">
             {movies.map((movie) => (
@@ -44,7 +42,7 @@ export default class MoviesList extends PureComponent {
           </div>
         </div>
         <div className="row-arrow right">
-          <img className="right-img" src={Arrow} />
+          {/* <img className="right-img" src={Arrow} /> */}
         </div>
       </div>
     );

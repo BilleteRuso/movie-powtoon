@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./SortBy.css";
+import "./Sort.css";
 
-class SortBy extends Component {
+class Sort extends Component {
   state = {
     value: "",
   };
@@ -17,8 +17,8 @@ class SortBy extends Component {
     return (
       <select
         className="sort"
-        value={this.state.value}
-        onChange={this.handleChange}
+        // value={this.state.value}
+        // onChange={this.handleChange}
       >
         <option value=""></option>
         <option value="asc">A - Z</option>
@@ -29,4 +29,4 @@ class SortBy extends Component {
   }
 }
 
-export default SortBy;
+export default Sort;
