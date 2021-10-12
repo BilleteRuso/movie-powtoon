@@ -1,3 +1,15 @@
+## Streaming platform project
+
+![powtoon-movie](https://user-images.githubusercontent.com/66924971/136928647-4749a2b3-ecc2-4ce0-b349-f6be1bd82d44.png)
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
