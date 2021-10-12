@@ -1,6 +1,7 @@
 ## Streaming platform project
 
-![powtoon-movie](https://user-images.githubusercontent.com/66924971/136928647-4749a2b3-ecc2-4ce0-b349-f6be1bd82d44.png)
+![powtoon-movie](https://user-images.githubusercontent.com/66924971/136930360-6c734fa9-5aed-4898-bdbc-2e8467865f2e.png)
+
 
 
 
