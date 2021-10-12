@@ -34,7 +34,7 @@ function Modal({ movie, count }) {
           </button>
           <img
             className="modal-poster"
-            alt={movie.title}
+            // alt={movie.title}
             key={movie?.id}
             src={`${
               movie?.backdrop_path

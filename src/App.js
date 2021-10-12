@@ -13,6 +13,7 @@ import Row from "./MovieLibrary/components/row/Row";
 import Modal from "./MovieLibrary/components/modal/Modal";
 import Footer from "./MovieLibrary/components/footer/Footer";
 import Loader from "./MovieLibrary/components/loader/Loader";
+import Infinite from "./MovieLibrary/components/infinite/Scroll";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -47,6 +48,7 @@ class App extends Component {
       <Provider store={store}>
         <Loader loaded={this.state.isLoad} />
         <Sort handleSortingChange={this.handleSortingChange} />
+        <Modal movie={this.state.movieModal} count={this.state.count} />
         <Navbar />
         <Banner handleLoad={this.handleLoad} />
         <Row
@@ -65,7 +67,11 @@ class App extends Component {
           handleModalChange={this.handleModalChange}
           type={this.state.type}
         />
-        <Modal movie={this.state.movieModal} count={this.state.count} />
+        <Infinite
+          fetchUrl={requests.fetchScroll}
+          handleModalChange={this.handleModalChange}
+          type={this.state.type}
+        />
         <Footer />
       </Provider>
     );

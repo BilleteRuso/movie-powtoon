@@ -121,7 +121,7 @@
   * Mobile Navigation 
   */
 
-@media (max-width: 710px) {
+@media (max-width: 860px) {
   .row {
     transform: translateY(-15vh);
   }

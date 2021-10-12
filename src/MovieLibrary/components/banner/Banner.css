@@ -41,7 +41,7 @@ hr {
   * Mobile Navigation 
   */
 
-@media (max-width: 710px) {
+@media (max-width: 860px) {
   .banner-title {
     font-size: 2rem;
     font-weight: 800;

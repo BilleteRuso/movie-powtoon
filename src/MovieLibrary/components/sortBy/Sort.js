@@ -20,16 +20,18 @@ class Sort extends Component {
 
   render() {
     return (
-      <select
-        className="sort"
-        value={this.state.value}
-        onChange={this.handleChange}
-      >
-        <option value=""></option>
-        <option value="asc">A - Z</option>
-        <option value="desc">Z - A</option>
-        <option value="rank">Ranking</option>
-      </select>
+      <div>
+        <select
+          className="sort"
+          value={this.state.value}
+          onChange={this.handleChange}
+        >
+          <option value=""></option>
+          <option value="asc">A - Z</option>
+          <option value="desc">Z - A</option>
+          <option value="rank">Ranking</option>
+        </select>
+      </div>
     );
   }
 }

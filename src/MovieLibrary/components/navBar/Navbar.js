@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import sortArow from "./sortArrow.png";
 import "./Navbar.css";
 
 function Navbar() {
@@ -23,6 +24,12 @@ function Navbar() {
         alt="Powtoon Logo"
       />
       <span className="sort-by">Sort by:</span>
+      <img
+        className="navbar-sortImg"
+        src={sortArow}
+        alt="rigth-arrow"
+        onClick={() => console.log("Ok")}
+      />
     </div>
   );
 }

@@ -37,15 +37,7 @@
   display: none;
 }
 
-@media (max-width: 710px) {
-  .sort-by {
-    display: none;
-  }
-  .sort {
-    width: 150px;
-  }
-}
-@media (max-width: 570px) {
+@media (max-width: 540px) {
   .navbar {
     height: 80px;
   }
@@ -54,14 +46,12 @@
     left: 35px;
   }
 
-  .sort {
-    display: none;
-  }
   .navbar-sortImg {
     display: block;
     height: 30px;
-    position: fixed;
+    position: absolute;
     right: 35px;
     top: 25px;
+    cursor: pointer;
   }
 }

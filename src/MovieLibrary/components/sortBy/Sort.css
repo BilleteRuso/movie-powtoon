@@ -28,11 +28,7 @@
   * Mobile Navigation 
   */
 
-.navbar-sortImg {
-  display: none;
-}
-
-@media (max-width: 710px) {
+@media (max-width: 860px) {
   .sort-by {
     display: none;
   }
@@ -40,7 +36,7 @@
     width: 150px;
   }
 }
-@media (max-width: 570px) {
+@media (max-width: 540px) {
   .sort {
     display: none;
   }
