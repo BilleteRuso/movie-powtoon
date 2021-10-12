@@ -5,7 +5,7 @@ import "./Banner.css";
 
 const BASE_URL = "https://image.tmdb.org/t/p/original";
 
-function Banner() {
+function Banner({ handleLoad }) {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
@@ -16,9 +16,13 @@ function Banner() {
           Math.floor(Math.random() * request.data.results.length - 1)
         ]
       );
+
       return request;
     }
     fetchData();
+    setTimeout(function () {
+      handleLoad(true);
+    }, 1000);
   }, []);
 
   function truncate(str, n) {
@@ -30,7 +34,7 @@ function Banner() {
       className="banner"
       style={{
         backgroundSize: "cover",
-        backgroundImage: `url(${BASE_URL}${movie?.backdrop_path})`,
+        backgroundImage: `url(${BASE_URL}${movie?.backdrop_path} )`,
         backgroundPosition: "center center",
       }}
     >

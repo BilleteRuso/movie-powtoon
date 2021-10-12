@@ -7,12 +7,14 @@ const BASE_URL = "https://image.tmdb.org/t/p/w500/";
 const BACKUP_IMG =
   "https://www.cfpdudgvirtual.org/wp-content/uploads/2018/12/Powtoon.jpg";
 
-function Row({ title, fetchUrl, childToParent }) {
+function Row({ title, fetchUrl, handleModalChange, type }) {
   const [movies, setMovies] = useState([]);
   const [slideNumber, setSlideNumber] = useState(0);
   const [isMoved, setIsMoved] = useState(false);
   const [isActive, setIsActive] = useState(true);
+  const [sortType, setSort] = useState("");
 
+  //API request
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
@@ -20,6 +22,27 @@ function Row({ title, fetchUrl, childToParent }) {
     }
     fetchData();
   }, [fetchUrl]);
+
+  //Set type of sort
+  useEffect(() => {
+    function setSortType() {
+      setSort(type);
+    }
+    setSortType();
+  }, [type]);
+
+  //Sort method
+  const sorted = movies.sort(function (a, b) {
+    if (sortType === "asc") {
+      const isReversed = 1;
+      return isReversed * a.title.localeCompare(b.title);
+    } else if (sortType === "desc") {
+      const isReversed = -1;
+      return isReversed * a.title.localeCompare(b.title);
+    } else if (sortType === "rank") {
+      return b.vote_average - a.vote_average;
+    }
+  });
 
   //Horizontal Scroll
   const listRef = useRef();
@@ -53,7 +76,7 @@ function Row({ title, fetchUrl, childToParent }) {
           <img className="left-img" src={Arrow} alt="left-arrow" />
         </div>
         <div className="row-posters" ref={listRef}>
-          {movies.map((movie) => (
+          {sorted.map((movie) => (
             <img
               key={movie.id}
               className="row-poster"
@@ -61,7 +84,7 @@ function Row({ title, fetchUrl, childToParent }) {
                 movie.poster_path ? BASE_URL + movie.poster_path : BACKUP_IMG
               }`}
               alt={movie.title}
-              onClick={() => childToParent(movie)}
+              onClick={() => handleModalChange(movie)}
             />
           ))}
         </div>

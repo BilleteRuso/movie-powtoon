@@ -5,12 +5,14 @@ import thunk from "redux-thunk";
 
 import rootReducer from "./rootReducer";
 import requests from "./MovieLibrary/request/request";
+
 import Navbar from "./MovieLibrary/components/navBar/Navbar";
 import Sort from "./MovieLibrary/components/sortBy/Sort";
 import Banner from "./MovieLibrary/components/banner/Banner";
 import Row from "./MovieLibrary/components/row/Row";
 import Modal from "./MovieLibrary/components/modal/Modal";
 import Footer from "./MovieLibrary/components/footer/Footer";
+import Loader from "./MovieLibrary/components/loader/Loader";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -23,31 +25,45 @@ class App extends Component {
   state = {
     movieModal: "",
     count: 0,
+    type: "",
+    isLoad: false,
   };
 
-  childToParent = (childData) => {
-    this.setState({ movieModal: childData });
+  handleSortingChange = (sortType) => {
+    this.setState({ type: sortType });
+  };
+
+  handleModalChange = (movieSelected) => {
+    this.setState({ movieModal: movieSelected });
     this.setState({ count: this.state.count + 1 });
+  };
+
+  handleLoad = (loaded) => {
+    this.setState({ isLoad: loaded });
   };
 
   render() {
     return (
       <Provider store={store}>
+        <Loader loaded={this.state.isLoad} />
+        <Sort handleSortingChange={this.handleSortingChange} />
         <Navbar />
-        <Banner />
-        <Sort />
+        <Banner handleLoad={this.handleLoad} />
         <Row
           title="Now Playing"
           fetchUrl={requests.fetchNowPlaying1}
-          childToParent={this.childToParent}
+          handleModalChange={this.handleModalChange}
+          type={this.state.type}
         />
         <Row
           fetchUrl={requests.fetchNowPlaying2}
-          childToParent={this.childToParent}
+          handleModalChange={this.handleModalChange}
+          type={this.state.type}
         />
         <Row
           fetchUrl={requests.fetchNowPlaying3}
-          childToParent={this.childToParent}
+          handleModalChange={this.handleModalChange}
+          type={this.state.type}
         />
         <Modal movie={this.state.movieModal} count={this.state.count} />
         <Footer />

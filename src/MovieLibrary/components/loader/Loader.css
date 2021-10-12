@@ -1,0 +1,43 @@
+.loader {
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  color: aliceblue;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  overflow-x: hidden;
+  position: fixed;
+  pointer-events: none;
+  transition: opacity 400ms linear;
+  width: 100vw;
+  z-index: 9999;
+}
+
+.loader-img {
+  animation-name: scale;
+  animation-duration: 2s;
+  animation-iteration-count: 4;
+  animation-timing-function: linear;
+  position: absolute;
+  width: 100px;
+}
+.loader-img-2 {
+  animation-name: scale;
+  animation-duration: 1.4s;
+  animation-iteration-count: 4;
+  animation-timing-function: linear;
+  position: absolute;
+  width: 100px;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
